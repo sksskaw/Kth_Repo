@@ -1,0 +1,42 @@
+use carDb;
+#no는 auto_increment를 사용할 것임.
+
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('i30','현대자동차','소형',5,'가솔린',1353,2000,'i30.png',"i30 자동차, Good" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('i40','현대자동차','중형',5,'가솔린',1999,2600,'i40.png',"i40 자동차, Strong" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('k3','기아자동차','소형',5,'가솔린',1598,2000,'k3.png',"k3 자동차, 가심비 좋음" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('k5','기아자동차','중형',5,'가솔린',1999,2500,'k5.png',"k5 자동차, 새로운 감성 드라이브" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('k7','기아자동차','준대형',5,'가솔린',2359,3300,'k7.png',"k7 자동차, 중후한 럭셔리" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('k9','기아자동차','준대형',5,'가솔린',3800,6000,'k9.png',"k9 자동차, 고급스런 디자인" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('qm3','르노자동차','소형',5,'디젤',1461,2100,'qm3.png',"qm3 자동차, 산뜻한 주행감" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('qm6','르노자동차','중형',5,'디젤',1997,2500,'qm6.png',"qm6 자동차, 후회없는 선택" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('sm3','르노자동차','소형',5,'전기',1461,2100,'sm3.png',"sm3 자동차, 탁월한 선택" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('sm5','르노자동차','중형',5,'가솔린',1998,2200,'sm5.png',"sm5 자동차, 올바른 선택" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('sm6','르노자동차','중형',5,'가솔린',1998,3000,'sm6.png',"sm6 자동차, 개성있는 드라이브" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('sm7','르노자동차','준대형',5,'가솔린',2495,3100,'sm7.png',"sm7 자동차, 귀족적인 분위기" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('그랜저','현대자동차','준대형',5,'가솔린',2400,4000,'그랜저.png',"그랜저 자동차, 가장 많은 선택" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('레이','기아자동차','소형',5,'가솔린',998,1400,'레이.png',"레이 자동차, 새로운 감성 드라이브" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('렉스턴','쌍용자동차','suv',5,'디젤',2157,3000,'렉스턴.png',"렉스턴 자동차, 효율적인 연비" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('말리부','쉐보레자동차','중형',5,'가솔린',1998,3000,'말리부.png',"말리부 자동차, 유럽적인 디자인" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('모닝','기아자동차','소형',5,'가솔린',998,1300,'모닝.png',"모닝 자동차, 출퇴근 베스트셀러" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('모하비','기아자동차','suv',5,'디젤',2959,4500,'모하비.png',"모하비 자동차, 강력한 구동력" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('스타렉스','현대자동차','중형',12,'디젤',2497,5000,'스타렉스.png',"스타렉스 자동차, 10인 이상 필드트립용" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('스팅어','기아자동차','중형',5,'가솔린',2500,4200,'스팅어.png',"스팅어 자동차, 수려한 드라이브" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('스파크','쉐보레자동차','소형',5,'가솔린',998,1200,'스파크.png',"스파크 자동차, 작지만 강한 드라이브" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('스포티지','기아자동차','suv',5,'디젤',1999,2800,'스포티지.png',"스포티지 자동차, 실속인있는 차" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('싼타페','현대자동차','suv',5,'가솔린',2200,3600,'싼타페.png',"산타페 자동차, SUV 베스트 셀링 카" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('쏘나타','현대자동차','중형',5,'디젤',1999,3000,'쏘나타.png',"쏘나타 자동차, 새로운 도약" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('쏘렌토','기아자동차','suv',5,'디젤',2200,3400,'쏘렌토.png',"쏘렌토 자동차, 오랜기간 검증된 차량" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('아반떼','현대자동차','중형',5,'가솔린',1600,2000,'아반떼.png',"아반떼 자동차, 서민들의 벗" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('엑센트','현대자동차','소형',5,'가솔린',1580,1600,'엑센트.png',"엑센트 자동차, 소형차의 진수" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('이쿼녹스','쉐보레자동차','suv',5,'디젤',1600,3800,'이쿼녹스.png',"이쿼녹스 자동차, 미국의 상징적인 디자인" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('임팔라','쉐보레자동차','준대형',5,'가솔린',3500,4100,'임팔라.png',"임팔라 자동차, 북유럽 베스트 셀링 카" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('카마로ss','쉐보레자동차','준대형',5,'가솔린',6000,5500,'카마로ss.png',"카마로ss 자동차, 머스탱 스타일" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('코나','현대자동차','소형',5,'가솔린',1591,3000,'코나.png',"코나 자동차, 만족할 수 있는 성능" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('코란도','쌍용자동차','suv',5,'디젤',1598,3000,'코란도.png',"코란도 자동차, 대중적인 브랜드" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('콜로라도','쉐보레자동차','픽업',5,'디젤',3000,4500,'콜로라도.png',"콜로라도 자동차, 픽업 트럭의 선구자" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('크루즈','쉐보레자동차','중형',5,'가솔린',1598,2200,'크루즈.png',"크루즈 자동차, 편안안 승차감" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('투싼','현대자동차','suv',5,'디젤',1600,2700,'투싼.png',"투싼 자동차, 부담없이 즐기는 차량" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('트랙스','현대자동차','suv',5,'디젤',1500,2100,'트랙스.png',"트랙스 자동차, 새로운 감성을 찾아서" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('티볼리','쌍용자동차','suv',5,'디젤',1597,2200,'티볼리.png',"티볼리 자동차, 가심비 최고" );
+insert into car(name, company, category, passengers, fuel, cc, price, imgfile, info) values ('팰리세이드','현대자동차','suv',5,'디젤',2200,4000,'팰리세이드.png',"팰리세이드 자동차, 새롭게 주목받는 차" );
+
