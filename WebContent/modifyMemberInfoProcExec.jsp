@@ -14,9 +14,18 @@
 	//user_hobby는 String[]이므로 별도로 처리필요
 	String [] user_hobby = request.getParameterValues("user_hobby");
 	String hobby=""; //체크박스 내용을 문자열로 저장
-	for (int i=0; i < user_hobby.length; i++){
-		hobby += user_hobby[i] + " ";
-	}
+	
+	try{
+		for (int i=0; i < user_hobby.length; i++){
+			hobby += user_hobby[i] + " ";
+		}
+	} catch(NullPointerException e) {
+	%>
+		<script type="text/javascript">
+		alert("취미를 한가지 이상 선택해 주세요");
+        history.go(-1);
+        </script>
+	<% } %>
 	
 %>
 

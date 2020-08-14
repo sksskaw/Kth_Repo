@@ -1,13 +1,13 @@
 use carDb;
 
 create table carReserveTable(
-reserveNo int(10) not null auto_increment, #ì˜ˆì•½ë²ˆí˜¸(ì½”ë©˜íŠ¸ëŠ” -- í˜¹ì€ #)
-user_id varchar(30) not null, #ì˜ˆì•½ìì˜ id
-no int not null, #DBì— í• ë‹¹ëœ ê³ ìœ ì˜ no[ë“±ë¡ì°¨ëŸ‰ì˜ no(ë²ˆí˜¸)]
-carQty int(3) not null, #ëŒ€ì—¬ ìˆ˜ëŸ‰
-rentDuration int(3) not null, #ì°¨ëŸ‰ëŒ€ì—¬ê¸°ê°„
-startDay varchar(25) not null, #ëŒ€ì—¬ ì‹œì‘ì¼[Dateë³€ìˆ˜ë¥¼ ì“¸ìˆ˜ë„ ìˆìŒ. ë³µì¡í•¨.]
-applyInsurance int(3) not null, #ë³´í—˜ê°€ì…ì—¬ë¶€
-applyBabySeat int(3) not null, #ë² ì´ë¹„ ì‹œíŠ¸ ì‚¬ìš©ì—¬ë¶€
+reserveNo int(10) not null auto_increment, #¿¹¾à¹øÈ£(ÄÚ¸àÆ®´Â -- È¤Àº #)
+user_id varchar(30) not null, #¿¹¾àÀÚÀÇ id
+no int not null, #DB¿¡ ÇÒ´çµÈ °íÀ¯ÀÇ no[µî·ÏÂ÷·®ÀÇ no(¹øÈ£)]
+carQty int(3) not null, #´ë¿© ¼ö·®
+rentDuration int(3) not null, #Â÷·®´ë¿©±â°£
+startDay varchar(25) not null, #´ë¿© ½ÃÀÛÀÏ[Dateº¯¼ö¸¦ ¾µ¼öµµ ÀÖÀ½. º¹ÀâÇÔ.]
+applyInsurance int(3) not null, #º¸Çè°¡ÀÔ¿©ºÎ
+applyBabySeat int(3) not null, #º£ÀÌºñ ½ÃÆ® »ç¿ë¿©ºÎ
 primary key(reserveNo)
 )default charset=utf8;

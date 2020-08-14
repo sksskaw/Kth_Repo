@@ -12,7 +12,7 @@ public class MemberDAO1 {
 		//db 접속을 책임지는 메소드
 		//mysql db에 접속하기
 		String user="root";
-		String user_pass="root";
+		String user_pass="378044";
 		//정상적이지만, ssl 예외가 발생할 때는 아래와 같이 ?useSSL=false 을 추가해줘야함.
 		String url="jdbc:mysql://localhost:3306/carDb?allowPublicKeyRetrieval=true&useSSL=false"; //carDb는 db이름
 		

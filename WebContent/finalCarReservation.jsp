@@ -40,7 +40,17 @@
 	//날짜를 2019-5-5 포맷해주는 클래스 선언(java.text.SimpleDateFormat 임포트함)
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
-	d1 = sdf.parse(ReserveBean.getStartDay());//렌트 시작일
+	try{
+		d1 = sdf.parse(ReserveBean.getStartDay());//렌트 시작일
+	} catch(NullPointerException e) {
+	%>
+		<script type="text/javascript">
+		alert("대여 시작일을 입력하세요");
+        history.go(-1);
+        </script>
+	<% } %>
+	
+	<%
 	d2 = sdf.parse(sdf.format(d2)); //d2가 현재 날짜를 의미함.
 	
 	//날짜비교 메소드 사용

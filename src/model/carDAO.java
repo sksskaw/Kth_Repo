@@ -13,18 +13,18 @@ public class carDAO {
 	ResultSet rs;
 	
 	
-	//mysql db�뿉 �젒�냽�븯湲�
+	//mysql db에 접속하기
 	String user="root";
-	String user_pass="root";
-	//�젙�긽�쟻�씠吏�留�, ssl �삁�쇅媛� 諛쒖깮�븷 �븣�뒗 �븘�옒�� 媛숈씠 ?useSSL=false �쓣 異붽��빐以섏빞�븿.
-	String url="jdbc:mysql://localhost:3306/carDb?useSSL=false"; //carDb�뒗 db�씠由�
+	String user_pass="378044";
+	//정상적이지만, ssl 예외가 발생할 때는 아래와 같이 ?useSSL=false 을 추가해줘야함.
+	String url="jdbc:mysql://localhost:3306/carDb?useSSL=false"; //carDb는 db이름
 	
-	//DB �젒�냽 硫붿냼�뱶
+	//DB에 접근할 수 있도록 도와주는 메소드
 	public void getCon( ) {
 		try{
-			//�빐�떦 �뜲�씠�꽣踰좎씠�뒪瑜� �궗�슜�븳�떎怨� �꽑�뼵(�겢�옒�뒪 �벑濡�:mysql�쓣 �궗�슜)
+			//해당 데이터베이스를 사용한다고 선언(클래스 등록:mysql을 사용)
 			Class.forName("com.mysql.jdbc.Driver");
-			//�빐�떦 �뜲�씠�꽣踰좎씠�뒪�뿉 �젒�냽
+			//해당 데이터베이스에 접속
 			con = DriverManager.getConnection(url, user, user_pass);
 			
 		} catch (Exception e) {
@@ -36,11 +36,9 @@ public class carDAO {
 	public void insertcar(carBean bbean) {
 		try{
 			getCon();
-			//�젒�냽 �썑 荑쇰━瑜� 以�鍮꾪븯�뿬 荑쇰━瑜� �궗�슜�븷 以�鍮꾪븿[�뀒�씠釉붾챸�씠 booktable�엫]
 			String sql = "insert into cartable values(?,?,?,?,?,?,?,?,?)";
-			//荑쇰━瑜� �궗�슜�븯�룄濡� �꽕�젙
 			PreparedStatement pstmt = con.prepareStatement(sql);
-			//?�뿉 留욌뒗 �뜲�씠�꽣瑜� 留듯븨�떆耳쒖쨲
+			
 			pstmt.setString(1, bbean.getName());
 			pstmt.setString(2, bbean.getCompany());
 			pstmt.setString(3, bbean.getCategory());
@@ -51,8 +49,8 @@ public class carDAO {
 			pstmt.setString(8, bbean.getImgfile());
 			pstmt.setString(9, bbean.getInfo());
 	
-			pstmt.executeUpdate(); //insert, update, delete�떆 �궗�슜�븿
-			//�옄�썝 諛섎궔
+			pstmt.executeUpdate();
+			//쿼리 실행
 			con.close();
 			
 		} catch (Exception e) {
@@ -61,15 +59,15 @@ public class carDAO {
 	}
 	
 	public Vector<carBean> allSlectMember(){
-		//由ы꽩 type�쓣 �젙�쓽
+		//등록된 차량 리스트
 		Vector<carBean> vec = new Vector<>();
-		//DB �젒�냽
+		//DB 접속
 		getCon();
 		
 		try {
-			String sql = "select * from car";//table紐� : car   order by는 정렬  desc내림차순 asc오름차순
+			String sql = "select * from car";
 			pstmt = con.prepareStatement(sql);
-			//ResultSet ���엯�쓽 荑쇰━ �뜲�씠�꽣瑜� 諛쏆쓬
+			//ResultSet 쿼리결과
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -85,7 +83,6 @@ public class carDAO {
 				bean.setImgfile(rs.getString(9));
 				bean.setInfo(rs.getString(10));
 				
-				//踰≫꽣�뿉 bean �겢�옒�뒪 異붽�
 				vec.add(bean);
 				
 			}
@@ -95,22 +92,19 @@ public class carDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return vec;//4媛쒖쓽 以묓삎李� �뜲�씠�꽣 由ы꽩�븿.
+		return vec;
 	}
 	
 	
 	
-	//以묓삎李� 4���쓽 �옄�룞李⑤�� 由ы꽩�븯�뒗 硫붿냼�뱶
+	//가장 HOT한 자동차 추천
 	public Vector<carBean> getSelect4Car(){
-		//由ы꽩 type�쓣 �젙�쓽
 		Vector<carBean> vec = new Vector<>();
-		//DB �젒�냽
 		getCon();
 		
 		try {
-			String sql = "select * from car where category='중형' order by no desc";//table紐� : car   order by는 정렬  desc내림차순 asc오름차순
+			String sql = "select * from car where category='중형' order by no desc";
 			pstmt = con.prepareStatement(sql);
-			//ResultSet ���엯�쓽 荑쇰━ �뜲�씠�꽣瑜� 諛쏆쓬
 			rs = pstmt.executeQuery();
 			int cnt=0;
 			
@@ -127,10 +121,9 @@ public class carDAO {
 				bean.setImgfile(rs.getString(9));
 				bean.setInfo(rs.getString(10));
 				
-				//踰≫꽣�뿉 bean �겢�옒�뒪 異붽�
 				vec.add(bean);
 				cnt++;
-				if (cnt >= 4) break; //諛섎났臾� �깉異�
+				if (cnt >= 4) break; //상위 4개의 레코드만 선택
 				
 			}
 			pstmt.close();
@@ -140,25 +133,20 @@ public class carDAO {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return vec;//4媛쒖쓽 以묓삎李� �뜲�씠�꽣 由ы꽩�븿.
+		return vec;
 	}
 	
-	//�꽑�깮�맂 Category�뿉 ���빐 �옄�룞李� 由ъ뒪�듃瑜� ���옣�븯�뿬 �룎�젮二쇰뒗 method
+	//차량 검색하기 선택된 카테고리에 따라 해당 차량 가져오기
 	public Vector<carBean> getCarCategory(String cate){
-		//由ы꽩 ���엯�쓣 誘몃━ �꽑�뼵
 		Vector<carBean> vec = new Vector<>();
-		//�뜲�씠�꽣瑜� �떞�쓣 bean �겢�옒�뒪瑜� �꽑�뼵
 		//carBean bean = null;
-		//DB�젒�냽
 		getCon();
 		try {
-			//荑쇰━臾� �옉�꽦
 			String sql = "select * from car where category=?";
 			pstmt = con.prepareStatement(sql);
-			//?�꽕�젙�븯湲�
 			pstmt.setString(1, cate);
 			rs = pstmt.executeQuery();
-			//諛섎났臾몄쓣 �궗�슜�븯�뿬 bean �떒�쐞濡� vector�뿉 ���옣�븯湲�
+			
 			while (rs.next()) {
 				carBean bean = new carBean();
 				bean.setNo(rs.getInt(1));
@@ -172,7 +160,6 @@ public class carDAO {
 				bean.setImgfile(rs.getString(9));
 				bean.setInfo(rs.getString(10));
 				
-				//踰≫꽣�뿉 bean �겢�옒�뒪 異붽�
 				vec.add(bean);				
 			}
 			pstmt.close();
@@ -186,20 +173,16 @@ public class carDAO {
 		return vec;		
 	}
 	
-	//紐⑤뱺 李⑤웾�쓣 寃��깋�븯�뒗 method �옉�꽦
+	//모든차량보기
 	public Vector<carBean> getAllCar(){
-		//由ы꽩 ���엯�쓣 誘몃━ �꽑�뼵
 				Vector<carBean> vec = new Vector<>();
-				//�뜲�씠�꽣瑜� �떞�쓣 bean �겢�옒�뒪瑜� �꽑�뼵
 				//carBean bean = null;
-				//DB�젒�냽
 				getCon();
 				try {
-					//荑쇰━臾� �옉�꽦
 					String sql = "select * from car";
 					pstmt = con.prepareStatement(sql);
 					rs = pstmt.executeQuery();
-					//諛섎났臾몄쓣 �궗�슜�븯�뿬 bean �떒�쐞濡� vector�뿉 ���옣�븯湲�
+
 					while (rs.next()) {
 						carBean bean = new carBean();
 						bean.setNo(rs.getInt(1));
@@ -212,8 +195,7 @@ public class carDAO {
 						bean.setPrice(rs.getInt(8));
 						bean.setImgfile(rs.getString(9));
 						bean.setInfo(rs.getString(10));
-						
-						//踰≫꽣�뿉 bean �겢�옒�뒪 異붽�
+
 						vec.add(bean);				
 					}
 					pstmt.close();
@@ -228,7 +210,7 @@ public class carDAO {
 		
 	}
 	
-	//�꽑�깮�맂 �븯�굹�쓽 �옄�룞李� �젙蹂대�� �씫�뼱�삤�뒗 method
+	//차량정보 읽어오기
 	public carBean getOneCarData(int no) {
 		//由ы꽩�삎�쓣 �꽑�뼵
 		carBean bean = new carBean();
@@ -238,9 +220,8 @@ public class carDAO {
 			String sql = "select * from car where no=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
-			//寃곌낵瑜� rs�뿉 諛쏆쓬
 			rs = pstmt.executeQuery();
-			//�븯�굹�쓽 �뜲�씠�꽣留� �씫�쑝誘�濡�
+			
 			if (rs.next()) {
 				bean.setNo(rs.getInt(1));
 				bean.setName(rs.getString(2));
@@ -263,16 +244,15 @@ public class carDAO {
 		return bean;
 	}
 	
-	//�븯�굹�쓽 �삁�빟 �떒�쐞�뿉 ���븳 �삁�빟 �젙蹂대�� ���옣�븯�뒗 method�옉�꽦
+	//예약정보 테이블에 입력
 	public void insertCarReservation(CarReserveBean rbean) {
-		getCon(); //DB�뿰�룞源뚯� �닔�뻾 
+		getCon();
 		
 		try {
-			//�삁�빟踰덊샇�뒗(reserveNo)�뒗 auto_increment 紐⑤뱶 �궗�슜�쑝濡� �옄�룞 �깮�꽦
 			String sql = "insert into carReserveTable(user_id, no,name,carQty,rentDuration,startDay,applyInsurance,applyBabySeat,totalPrice) "
 					+ "values(?,?,?,?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(sql);
-			//?�뿉 媛� �븷�떦
+
 			pstmt.setString(1,rbean.getUser_id());
 			pstmt.setInt(2, rbean.getNo());
 			pstmt.setString(3,rbean.getName());
@@ -292,7 +272,7 @@ public class carDAO {
 			e.printStackTrace();
 		}
 	}
-	//�쉶�썝�쓽 �젋�듃移� �삁�빟 �젙蹂대�� �씫�뼱�삤�뒗 method
+	//예약 확인하기
 	public Vector<CarReserveBean> getAllReservation(String userId){
 		Vector<CarReserveBean> vec = new Vector<>();//由ы꽩 ���엯
 				
